@@ -4,12 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node -r esm auth.js & node -r esm student.js & node -r esm course.js & node -r esm gateway.js"
+    "server": "concurrently -k npm:server:*",
+    "server:student": "node -r esm Student/student.js",
+    "server:course": "node -r esm Course/course.js ",
+    "server:auth": "node -r esm Auth/auth.js",
+    "server:gateway": "node -r esm Gateway/gateway.js",
+    "start": "npm run server"
   },
   "dependencies": {
     "@apollo/federation": "^0.20.7",
     "@apollo/gateway": "^0.21.4",
     "apollo-server-express": "^2.19.0",
+    "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
