@@ -2,16 +2,17 @@ import { RemoteGraphQLDataSource } from "@apollo/gateway";
 
 export default class AppSource extends RemoteGraphQLDataSource {
   async willSendRequest({ request, context }) {
-    if (context.req === undefined) {
+    if (context.req == undefined) {
       /**
        * This means that the gateway is starting up
        * It will ping the micro-services for their schema
        */
 
       request.http.headers.set(
-        process.env.GATE_INIT_HEADER_NAME,
-        process.env.GATE_INIT_HEADER_VALUE
+        process.env.GATEWAY_INIT_HEADER_NAME,
+        process.env.GATEWAY_INIT_HEADER_VALUE
       );
+
       return;
     }
 

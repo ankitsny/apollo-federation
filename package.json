@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node -r esm auth.js & node -r esm student.js & node -r esm course.js & node -r esm gateway.js"
+  },
   "dependencies": {
     "@apollo/federation": "^0.20.7",
     "@apollo/gateway": "^0.21.4",

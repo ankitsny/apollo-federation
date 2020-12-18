@@ -1,18 +1,18 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-  extend Query {
+  extend type Query {
     course(id: Int!): Course
     courses: [Course]
   }
 
-  type Course @key(field: "id") {
+  type Course @key(fields: "id") {
     id: Int!
     name: String!
     students: [Student]
   }
 
-  extend type Student @key(field: "id") {
+  extend type Student @key(fields: "id") {
     id: Int! @external
   }
 `;

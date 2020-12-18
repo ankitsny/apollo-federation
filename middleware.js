@@ -22,6 +22,9 @@ export function authCheck() {
       return;
     }
 
+    if (!req.headers["authorization"])
+      res.status(401).send("Auth token missing");
+
     if (
       checkHeaderFromRequest(
         req,
@@ -37,6 +40,7 @@ export function authCheck() {
       next();
       return;
     }
+
     res.status(401);
     res.json({});
   };

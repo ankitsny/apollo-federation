@@ -19,6 +19,4 @@ const apolloServer = new ApolloServer({
 apolloServer.applyMiddleware({ app, cors: false });
 
 app.listen(Number(process.env.AUTH_PORT));
-console.log(
-  `Auth server started at domain ${process.env.AUTH_DOMAIN}:${process.env.AUTH_PORT}`
-);
+console.log(`Auth server started at domain ${process.env.AUTH_DOMAIN}`);

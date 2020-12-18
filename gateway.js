@@ -11,15 +11,15 @@ const gateway = new ApolloGateway({
   serviceList: [
     {
       name: "auth",
-      url: `${process.env.AUTH_DOMAIN}${process.env.GRAPHQL_PATH}`,
+      url: `${process.env.AUTH_DOMAIN}/${process.env.GRAPHQL_PATH}`,
     },
     {
       name: "course",
-      url: `${process.env.COURSE_DOMAIN}${process.env.GRAPHQL_PATH}`,
+      url: `${process.env.COURSE_DOMAIN}/${process.env.GRAPHQL_PATH}`,
     },
     {
       name: "student",
-      url: `${process.env.STUDENT_DOMAIN}${process.env.GRAPHQL_PATH}`,
+      url: `${process.env.STUDENT_DOMAIN}/${process.env.GRAPHQL_PATH}`,
     },
   ],
   buildService({ name, url }) {
@@ -38,6 +38,4 @@ const app = express();
 apolloServer.applyMiddleware({ app, cors: false });
 
 app.listen(process.env.GATEWAY_PORT);
-console.log(
-  `Gateway server started at domain ${process.env.GATEWAY_DOMAIN}:${process.env.GATEWAY_PORT}`
-);
+console.log(`Gateway server started at domain ${process.env.GATEWAY_DOMAIN}`);
